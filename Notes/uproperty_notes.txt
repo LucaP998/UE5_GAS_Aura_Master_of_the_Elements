@@ -1,0 +1,97 @@
+﻿Notes
+
+
+Most common UPROPERTY specifiers:
+
+# Edit / Visibility
+
+EditAnywhere
+Editable in editor everywhere (defaults, instances). The most permissive edit specifier.
+
+EditDefaultsOnly
+Editable only on class defaults (Blueprint / archetype), not per-instance.
+
+EditInstanceOnly
+Editable only on placed instances, not on defaults.
+
+VisibleAnywhere
+Visible but not editable anywhere.
+
+VisibleDefaultsOnly
+Visible only in defaults.
+
+VisibleInstanceOnly
+Visible only on instances.
+
+# Blueprint exposure
+
+BlueprintReadWrite
+Can be read & modified in Blueprints.
+
+BlueprintReadOnly
+Readable but not writable in Blueprints.
+
+BlueprintAssignable
+For multicast delegates (lets BP bind events).
+
+# Serialization / Saving
+
+SaveGame
+Included when using SaveGame system.
+
+Transient
+Not serialized, not saved, reset on load.
+
+DuplicateTransient
+Not copied when duplicating objects.
+
+# Networking
+
+Replicated
+Property replicates over network.
+
+ReplicatedUsing=OnRep_Function
+Replicates + triggers callback when updated. (Requires GetLifetimeReplicatedProps)
+
+# Object / Component Behavior
+
+Instanced
+Ensures subobject is unique per owner.
+
+Export
+Used for UObject references that should be treated like subobjects.
+
+ContainsInstancedReference
+Needed for containers holding instanced objects.
+
+# UI / Editor Metadata (VERY common)
+
+Category="..."
+Groups property in Details Panel.
+
+meta=(ClampMin="0")
+Hard clamp in UI.
+
+meta=(UIMin="0", UIMax="100")
+Slider limits (soft clamp).
+
+meta=(AllowPrivateAccess="true")
+Expose private members to reflection system.
+
+meta=(EditCondition="bSomething")
+Enable/disable based on another property.
+
+meta=(EditConditionHides)
+Hide instead of disable.
+
+DisplayName="Nice Name"
+Overrides label in editor.
+
+# Garbage Collection / Memory Safety
+
+Any UObject pointer must be a UPROPERTY() or GC may delete it.
+
+Example:
+
+UPROPERTY()
+UStaticMeshComponent* Mesh;
