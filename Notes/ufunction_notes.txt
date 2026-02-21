@@ -1,0 +1,42 @@
+UFUNCTION
+
+Marks a C++ function visible to Unreal's reflection system.
+Enables it to be called by Blueprints, replication, delegates, or other engine systems.
+Allows metadata specifiers like BlueprintCallable, Server, Client, etc.
+
+
+Most common specifiers and uses:
+
+
+BlueprintCallable	
+Function can be called from a Blueprint graph.
+
+BlueprintPure	
+Function is read-only, does not modify state; can be used as a “getter” in Blueprints.
+
+BlueprintImplementableEvent	
+Function declared in C++, implemented in Blueprint only.
+
+BlueprintNativeEvent	
+Function declared in C++, optionally overridable in Blueprint.
+
+Server	
+Marks function to run on server in networked multiplayer. Requires WithValidation in UE4.
+
+Client	
+Marks function to run on the owning client.
+
+NetMulticast	
+Function runs on all clients and the server.
+
+Reliable / Unreliable	
+Controls network replication guarantee for Server/Client/Multicast functions.
+
+Exec	
+Function can be called from in-game console.
+
+Category="..."	
+Organizes function in Blueprint editor menus.
+
+WithValidation	
+In networked functions, adds a bool Validate() function for security.
