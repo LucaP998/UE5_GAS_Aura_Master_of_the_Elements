@@ -39,6 +39,11 @@ struct FEffectProperties
 	ACharacter* TargetCharacter = nullptr;
 };
 
+// This big signature is the equivalent of FGameplayAttribute(*)() so a simple function pointer.
+// typedef is specific to the FGameplayAttribute() signature, but TStaticFunPtr is generic
+//typedef TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FAttributeFuncPtr;
+template<class T>
+using TStaticFunPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
 
 /**
  * 
@@ -57,8 +62,9 @@ public:
 	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
 	
 	
-	
-	
+	// This is really complex, but basically it allows me to add to the hashMap the function directly
+	// so that I don't have to create a delegate for each attribute.
+	TMap<FGameplayTag, TStaticFunPtr<FGameplayAttribute()>> TagsToAttributes;
 	
 	
 	
