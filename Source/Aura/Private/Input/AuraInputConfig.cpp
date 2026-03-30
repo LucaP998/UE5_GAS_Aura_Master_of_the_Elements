@@ -1,7 +1,7 @@
 // Copyright Luca Palermo
 
 
-#include "AuraInputConfig.h"
+#include "Input/AuraInputConfig.h"
 
 #include "InputAction.h"
 
