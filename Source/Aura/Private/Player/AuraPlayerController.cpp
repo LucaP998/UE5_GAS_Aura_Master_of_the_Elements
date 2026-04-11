@@ -159,7 +159,7 @@ void AAuraPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 	else
 	{
 		FollowTime += GetWorld()->GetDeltaSeconds();
-		if (CursorHit.bBlockingHit) CachedDestination = CursorHit.ImpactPoint; // Hit.Location is also fine
+		if (CursorHit.bBlockingHit) CachedDestination = CursorHit.Location; // Hit.ImpactPoint is also fine
 		if (APawn* ControlledPawn = GetPawn())
 		{
 			const FVector WorldDirection = (CachedDestination - ControlledPawn->GetActorLocation()).GetSafeNormal();

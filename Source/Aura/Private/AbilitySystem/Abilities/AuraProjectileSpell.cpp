@@ -20,7 +20,6 @@ void UAuraProjectileSpell::SpawnProjectile()
 {
 	const bool bIsServer = GetAvatarActorFromActorInfo()->HasAuthority();
 	if (!bIsServer) return;
-	
 	if (ICombatInterface* CombatInterface = Cast<ICombatInterface>(GetAvatarActorFromActorInfo()))
 	{
 		const FVector SocketLocation = CombatInterface->GetCombatSocketLocation();
