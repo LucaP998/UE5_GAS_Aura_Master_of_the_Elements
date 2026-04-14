@@ -3,6 +3,7 @@
 
 #include "AuraAssetManager.h"
 
+#include "AbilitySystemGlobals.h"
 #include "AuraGameplayTags.h"
 
 // I had to add AssetManagerClassName=/Script/Aura.AuraAssetManager to DefaultEngine.ini in the config folder
@@ -21,4 +22,6 @@ void UAuraAssetManager::StartInitialLoading()
 {
 	Super::StartInitialLoading();
 	FAuraGameplayTags::InitializeNativeGameplayTags();
+	// This is required to use Target Data
+	UAbilitySystemGlobals::Get().InitGlobalTags();
 }
