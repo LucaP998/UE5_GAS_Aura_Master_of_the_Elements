@@ -42,13 +42,11 @@ void UTargetDataUnderMouse::SendMouseCursorData()
 	}
 	FHitResult HitResult;
 	ActorInfo->PlayerController->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
-	
 	if (!HitResult.bBlockingHit) return;
 	FGameplayAbilityTargetDataHandle DataHandle;
 	FGameplayAbilityTargetData_SingleTargetHit* Data = new FGameplayAbilityTargetData_SingleTargetHit();
 	Data->HitResult = HitResult; 
 	DataHandle.Add(Data);
-	
 	AbilitySystemComponent->ServerSetReplicatedTargetData(
 		GetAbilitySpecHandle(), 
 		GetActivationPredictionKey(),
