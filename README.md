@@ -18,6 +18,7 @@ Currently implemented features:
 - Attributes system with primary secondary attributes
 - Attributes menu
 - Abilities structure
+- Gameplay Abilities
 
 
 
