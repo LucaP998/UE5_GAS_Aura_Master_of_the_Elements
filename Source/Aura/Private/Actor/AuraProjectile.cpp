@@ -3,6 +3,8 @@
 
 #include "Actor/AuraProjectile.h"
 
+#include "AbilitySystemBlueprintLibrary.h"
+#include "AbilitySystemComponent.h"
 #include "NiagaraEditorPreviewActor.h"
 #include "NiagaraFunctionLibrary.h"
 #include "Aura/Aura.h"
@@ -57,6 +59,12 @@ void AAuraProjectile::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, 
 	LoopingSoundComponent->Stop();
 	if (HasAuthority())
 	{
+		if (UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(OtherActor))
+		{
+			// I can also get SourceASC via DamageEffectSpecHandle.Data->GetContext().GetInstigatorAbilitySystemComponent()
+			// then call SourceASC->ApplyGameplayEffectSpecToTarget(..., TargetASC)
+			TargetASC->ApplyGameplayEffectSpecToSelf(*DamageEffectSpecHandle.Data.Get());
+		}\
 		Destroy();
 	}
 	else
