@@ -33,4 +33,6 @@ public:
 	// Blueprint native automatically generates a virtual native version of the method usable in C++, with _Implementation at the end
 	UFUNCTION(BlueprintnativeEvent, BlueprintCallable)
 	UAnimMontage* GetHitReactMontage();
+	
+	virtual void Die() = 0;
 };
