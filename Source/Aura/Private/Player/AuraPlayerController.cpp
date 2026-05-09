@@ -12,6 +12,8 @@
 #include "Components/SplineComponent.h"
 #include "Input/AuraInputComponent.h"
 #include "Interaction/EnemyInterface.h"
+#include "GameFramework/Character.h"
+#include "UI/Widget/DamageTextComponent.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
@@ -25,6 +27,20 @@ void AAuraPlayerController::PlayerTick(float DeltaTime)
 	Super::PlayerTick(DeltaTime);
 	CursorTrace();
 	AutoRun();
+}
+
+void AAuraPlayerController::ShowDamageNumber_Implementation(float DamageAmount, ACharacter* TargetCharacter)
+{
+	// IsValid checks if pointer is null but also if it's pending kill
+	// It's not used on DamageTextComponentClass because it's a property that I either set it from blueprint or not set it
+	if (IsValid(TargetCharacter) && DamageTextComponentClass)
+	{
+		UDamageTextComponent* DamageText = NewObject<UDamageTextComponent>(TargetCharacter, DamageTextComponentClass);
+		DamageText->RegisterComponent(); // CreateDefaultSubObject does this behind the scenes, but here it's necessary at runtime
+		DamageText->AttachToComponent(TargetCharacter->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform); // This is just to set the location
+		DamageText->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);		
+		DamageText->SetDamageText(DamageAmount);
+	}
 }
 
 // To make this work online, "Allow Client Side Navigation" must be checked in Project Settings -> Navigation System
