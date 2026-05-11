@@ -1,6 +1,6 @@
 # UE5 GAS: Aura Master of the Elements
 
-⚠️This is still a Work-In-Progress. Very early in development! About 25% done. ⚠️
+⚠️This is still a Work-In-Progress. Very early in development! About 35% done. ⚠️
 
 ---
 This is an Online Multiplayer Top-Down RPG. 
