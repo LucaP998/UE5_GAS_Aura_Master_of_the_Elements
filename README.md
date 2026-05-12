@@ -19,6 +19,7 @@ Currently implemented features:
 - Attributes menu
 - Abilities structure
 - Gameplay Abilities
+- Custom Damage calculations
 
 
 
