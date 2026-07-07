@@ -33,7 +33,7 @@ void AAuraPlayerController::ShowDamageNumber_Implementation(float DamageAmount, 
 {
 	// IsValid checks if pointer is null but also if it's pending kill
 	// It's not used on DamageTextComponentClass because it's a property that I either set it from blueprint or not set it
-	if (IsValid(TargetCharacter) && DamageTextComponentClass)
+	if (IsValid(TargetCharacter) && DamageTextComponentClass && IsLocalController())
 	{
 		UDamageTextComponent* DamageText = NewObject<UDamageTextComponent>(TargetCharacter, DamageTextComponentClass);
 		DamageText->RegisterComponent(); // CreateDefaultSubObject does this behind the scenes, but here it's necessary at runtime
