@@ -5,7 +5,8 @@
 ---
 This is an Online Multiplayer Top-Down RPG. 
 
-I am currently making this by following a udemy course about Unreal Engine 5's Gameplay Ability System (GAS).
+I am currently making this by following a [udemy course](https://www.udemy.com/course/unreal-engine-5-gas-top-down-rpg/) about Unreal Engine 5's Gameplay Ability System (GAS).
+
 
 There's not much gameplay yet, just a scene with some random stuff, I'm still mainly setting up the code to build on it later. 
 
